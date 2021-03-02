@@ -2,18 +2,27 @@ package main
 
 import (
 	"log"
-	"net/http"
+	"time"
 
+	"github.com/kelseyhightower/envconfig"
+	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 )
 
+// Config represents environment variables
+type Config struct {
+	Address string        `default:"0.0.0.0:8080"`
+	Timeout time.Duration `default:"5s"`
+}
+
 func main() {
-	svr := server{
-		router: NewRouter(),
-		logger: logrus.New(),
+	logger := logrus.New()
+	var c Config
+	if err := envconfig.Process("api", &c); err != nil {
+		logger.Fatal(errors.Wrap(err, "failed to read envconfig").Error())
 	}
 
-	svr.routes()
+	svr := newServer(c.Address, c.Timeout, logger)
 
-	log.Fatal(http.ListenAndServe(":8080", svr.router))
+	log.Fatal(svr.httpServer.ListenAndServe())
 }
