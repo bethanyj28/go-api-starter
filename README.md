@@ -16,6 +16,6 @@ Any packages you write for your app that you would be okay with other applicatio
 
 ## TODO
 - [x] Base API with health check
-- [ ] .env file setup
+- [x] .env file setup
 - [ ] Base tests
 - [ ] Database setup
