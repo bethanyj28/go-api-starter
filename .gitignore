@@ -19,3 +19,4 @@ vendor/
 
 # Environment configs
 .env
+data/

@@ -14,8 +14,11 @@ I put the server struct and all handlers in `cmd/server` because I thought it ma
 
 Any packages you write for your app that you would be okay with other applications using should go in `/pkg/{package_name}`. Any packages you write for your app that you want to keep private should go in `/internal/{package_name}`. Make sure to make interfaces for your packages to allow for easy testing. I highly recommend using [golang/mock](https://github.com/golang/mock) for mocking packages.
 
+## Database
+This template comes equipped with a postgres database using the [pgx](https://pkg.go.dev/github.com/jackc/pgx/v4) driver. It additionally uses [golang-migrate](https://pkg.go.dev/github.com/golang-migrate/migrate/v4) for migrations. However, it connects to the main application via an interface, so as long as a database store implements the interface you're golden. The app will not start up until migrations are added.
+
 ## TODO
 - [x] Base API with health check
 - [x] .env file setup
 - [ ] Base tests
-- [ ] Database setup
+- [x] Database setup

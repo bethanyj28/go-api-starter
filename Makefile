@@ -8,3 +8,5 @@ vendor:
 	go mod vendor && go mod tidy
 env:
 	touch environment.env
+up:
+	docker-compose up --force-recreate --build
