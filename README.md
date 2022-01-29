@@ -4,7 +4,7 @@ A good starting point for any Go API
 ## Getting Started
 To run this api, simply run `make build && make run`, and it will launch the server with a health endpoint.
 
-To use this as a starter, you can either use this as a template on GitHub or copy the code to your directory. Replace `bethanyj28/go-api-starter` with your repo name.
+To use this as a starter, you can either use this as a template on GitHub or copy the code to your directory. First, remove the `go.mod` and `go.sum` files. Next, replace every instance of `bethanyj28/go-api-starter` with your repo name. Finally, run `go mod init && go mod tidy`.
 
 ## Inspiration
 The folder layout was loosely inspired by Mat Ryer's [How I Write HTTP Services After Eight Years](https://pace.dev/blog/2018/05/09/how-I-write-http-services-after-eight-years.html). I really liked his thought about encapsulating handlers in functions that can perform setup and have a server struct to manage all the components of running a server. I took a lot of queues on layout from [golang-standards/project-layout](https://github.com/golang-standards/project-layout). It has a lot of great examples of real-world projects implementing those patterns, too.
