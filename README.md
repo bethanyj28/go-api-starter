@@ -7,7 +7,7 @@ To run this api, simply run `make build && make run`, and it will launch the ser
 To use this as a starter, you can either use this as a template on GitHub or copy the code to your directory. First, remove the `go.mod` and `go.sum` files. Next, replace every instance of `bethanyj28/go-api-starter` with your repo name. Finally, run `go mod init && go mod tidy`.
 
 ## Inspiration
-The folder layout was loosely inspired by Mat Ryer's [How I Write HTTP Services After Eight Years](https://pace.dev/blog/2018/05/09/how-I-write-http-services-after-eight-years.html). I really liked his thought about encapsulating handlers in functions that can perform setup and have a server struct to manage all the components of running a server. I took a lot of queues on layout from [golang-standards/project-layout](https://github.com/golang-standards/project-layout). It has a lot of great examples of real-world projects implementing those patterns, too.
+The folder layout was loosely inspired by Mat Ryer's [How I Write HTTP Services After Eight Years](https://pace.dev/blog/2018/05/09/how-I-write-http-services-after-eight-years.html). I really liked his thought about encapsulating handlers in functions that can perform setup and have a server struct to manage all the components of running a server. I took a lot of queues on layout from [golang-standards/project-layout](https://github.com/golang-standards/project-layout). It has a lot of great examples of real-world projects implementing those patterns, too<sup>*</sup>.
 
 ## Layout
 I put the server struct and all handlers in `cmd/server` because I thought it made sense. It's nice compared to keeping it in the root because all app components are stored in their blocks. However, it does make the file structure more complicated. I won't be offended if you move it to the root if that's what you prefer. 
@@ -22,3 +22,5 @@ This template comes equipped with a postgres database using the [pgx](https://pk
 - [x] .env file setup
 - [ ] Base tests
 - [x] Database setup
+
+<sup>*</sup>Since writing, apparently this is a controversial opinion whether the standards repo actually reflects good Go layout standards and is not endorsed by the Go team. As always, use your best judgement and never blindly copy code.
