@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine AS builder
+FROM golang:1.17-alpine AS builder
 
 WORKDIR /go/src/github.com/bethanyj28/go-api-starter
 COPY . /go/src/github.com/bethanyj28/go-api-starter
@@ -8,6 +8,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o app ./cmd/server
 FROM alpine:latest
 WORKDIR /root/
 COPY --from=builder /go/src/github.com/bethanyj28/go-api-starter/app .
+
+# Move migrations to container - remove if not using migrations
 COPY --from=builder /go/src/github.com/bethanyj28/go-api-starter/internal/db/migrations ./migrations
 
 # a bit of magic to 'wait' for dependencies to be available for testing
